@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+    <title>WeUI</title>
+    <!-- 引入 WeUI -->
+    <link rel="stylesheet" href="weui.css"/>
+    <script src="echarts.min.js"></script>
+</head>
+<body>
+<article class="weui-article">
+    <section>
+        <h2 class="title">建议</h2>
+        <section>
+            <h3>运动</h3>
+            <p>
+                <img src="./res/overweight_sport.jpeg" alt="">
+            </p>
+            <p>
+                运动：力量训练，有训练后燃脂(补燃)、细胞内粒线体增加的幅度、维持或增加肌肉、长时间提高新陈代谢与基础代谢率的作用。
+                HIIT，透过短时间的高耗能运动加上短暂歇息的方式来降低体脂肪率。
+                传统的、低强度的有氧运动。虽然可以最直接的燃烧脂肪，但缺点在于整体效益较差
+            </p>
+        </section>
+        <section>
+            <h3>饮食</h3>
+            <div id="main" style="height:400px"></div>
+            <p>
+                饮食结构建议为：碳水化合物45-65%，蛋白质10-35%，脂肪20-35%。
+                多食用提供健康蛋白、纤维和适量脂肪的食物来填饱肚子，来维持饱腹感，调节血糖。
+                多食用鱼虾等水产品、禽类和瘦肉为，减少烹调油，搭配适量主食，限制甜食、饮料。（注意：千万不要节食或单一元素进食）
+            </p>
+        </section>
+    </section>
+</article>
+<script type="text/javascript" src="weui.min.js"></script>
+<script>
+    var myChart = echarts.init(document.getElementById('main'));
+    myChart.setOption({
+        series : [
+            {
+                name: '访问来源',
+                type: 'pie',
+                radius: '55%',
+                data:[
+                    {value:55, name:'碳水化合物'},
+                    {value:22, name:'蛋白质'},
+                    {value:23, name:'脂肪'}
+                ]
+            }
+        ]
+    });
+</script>
+</body>
+</html>

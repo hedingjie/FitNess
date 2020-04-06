@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+    <title>WeUI</title>
+    <!-- 引入 WeUI -->
+    <link rel="stylesheet" href="weui.css"/>
+</head>
+<body>
+<div class="weui-cells__title">个人信息</div>
+<div class="weui-cells weui-cells_form">
+    <div class="weui-cell">
+        <div class="weui-cell__hd">
+            <label class="weui-label">年龄:</label>
+        </div>
+        <div class="weui-cell__bd">
+            <input class="weui-input" id="age" type="number" pattern="[0-9]*" placeholder="请输入年龄"/>
+        </div>
+    </div>
+    <div class="weui-cell">
+        <div class="weui-cell__hd"><label class="weui-label">体重(Kg):</label></div>
+        <div class="weui-cell__bd">
+            <input class="weui-input" id="weight" type="number" pattern="[0-9]*" placeholder="请输入体重"/>
+        </div>
+    </div>
+    <div class="weui-cell">
+        <div class="weui-cell__hd">
+            <label class="weui-label">身高(cm):</label>
+        </div>
+        <div class="weui-cell__bd">
+            <input class="weui-input" id="height" type="number" pattern="[0-9]*" placeholder="请输入身高"/>
+        </div>
+    </div>
+    <div class="weui-cells__title">性别</div>
+    <div class="weui-cells weui-cells_radio">
+        <label class="weui-cell weui-check__label" for="x11">
+            <div class="weui-cell__bd">
+                <p>女</p>
+            </div>
+            <div class="weui-cell__ft">
+                <input type="radio" class="weui-check" name="sex" id="x11" value="0" checked="checked" onclick="changePic()">
+                <span class="weui-icon-checked"></span>
+            </div>
+        </label>
+        <label class="weui-cell weui-check__label" for="x12">
+
+            <div class="weui-cell__bd">
+                <p>男</p>
+            </div>
+            <div class="weui-cell__ft">
+                <input type="radio" class="weui-check" name="sex" value="1" id="x12" onclick="changePic()">
+                <span class="weui-icon-checked"></span>
+            </div>
+        </label>
+    </div>
+    <div class="weui-cells">
+
+        <div class="weui-cell weui-cell_select">
+            <div class="weui-cell__hd">
+                <label class="weui-label">运动习惯:</label>
+            </div>
+            <div class="weui-cell__bd">
+                <div class="weui-cell__bd">
+                    <select class="weui-select" name="select2">
+                        <option value="0">无</option>
+                        <option value="1">一般强度(慢走/快走)</option>
+                        <option value="2">中等强度(健身房训练)</option>
+                        <option value="3">高强度(无氧间歇训练)</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <div class="weui-cell weui-cell_select">
+            <div class="weui-cell__hd">
+                <label class="weui-label">运动时间:</label>
+            </div>
+            <div class="weui-cell__bd">
+                <div class="weui-cell__bd">
+                    <select class="weui-select" name="select2">
+                        <option value="0">无</option>
+                        <option value="1">每周1小时</option>
+                        <option value="2">每周2小时</option>
+                        <option value="3">每周3小时</option>
+                        <option value="4">每周4小时</option>
+                        <option value="5">每周5小时</option>
+                        <option value="6">每周6小时</option>
+                        <option value="7">每周7小时</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="weui-cell">
+        <div class="weui-cell__hd">
+            <label class="weui-label">体型:</label>
+        </div>
+        <div class="weui-cell__bd weui-cell_vcode">
+            <img id="body-img" src="res/female/1.png">
+            <div class="weui-slider-box">
+                <div id="slider" class="weui-slider">
+                    <div class="weui-slider__inner">
+                        <div class="weui-slider__track"></div>
+                        <div class="weui-slider__handler"></div>
+                    </div>
+                </div>
+                <div id="sliderValue" class="weui-slider-box__value"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="weui-cells__tips">点击按钮进行计算</div>
+
+<!-- 使用 -->
+<a href="javascript:;" class="weui-btn weui-btn_primary" onclick="calculate()">计算</a>
+
+<script type="text/javascript" src="weui.min.js"></script>
+<script type="text/javascript">
+    // 体脂率
+    // var bodyFat=0;
+    // // 体重
+    // var weight=document.getElementById('weight').value;
+    // var height=document.getElementById('height').value;
+    var bodyFat=0;
+
+    var slideChangePic=function (sex,imgId){
+        if(sex==0){
+            switch (imgId) {
+                case 0:
+                    document.getElementById('body-img').setAttribute('src','res/female/0.png');
+                    bodyFat=10;
+                    break;
+                case 1:
+                    document.getElementById('body-img').setAttribute('src','res/female/1.png');
+                    bodyFat=15;
+                    break;
+                case 2:
+                    document.getElementById('body-img').setAttribute('src','res/female/2.png');
+                    bodyFat=20;
+                    break;
+                case 3:
+                    document.getElementById('body-img').setAttribute('src','res/female/3.png');
+                    bodyFat=25;
+                    break;
+                case 4:
+                    document.getElementById('body-img').setAttribute('src','res/female/4.png');
+                    bodyFat=30;
+                    break;
+                case 5:
+                    document.getElementById('body-img').setAttribute('src','res/female/5.png');
+                    bodyFat=35;
+                    break;
+                case 6:
+                    document.getElementById('body-img').setAttribute('src','res/female/6.png');
+                    bodyFat=40;
+                    break;
+                case 7:
+                    document.getElementById('body-img').setAttribute('src','res/female/7.png');
+                    bodyFat=45;
+                    break;
+                case 8:
+                    document.getElementById('body-img').setAttribute('src','res/female/8.png');
+                    bodyFat=50;
+                    break;
+                default:
+                    document.getElementById('body-img').setAttribute('src','res/female/1.png');
+                    bodyFat=15;
+                    break;
+            }
+        }
+        else{
+            switch (imgId) {
+                case 0:
+                    document.getElementById('body-img').setAttribute('src','res/male/0.png');
+                    bodyFat=6;
+                    break;
+                case 1:
+                    document.getElementById('body-img').setAttribute('src','res/male/1.png');
+                    bodyFat=9;
+                    break;
+                case 2:
+                    document.getElementById('body-img').setAttribute('src','res/male/2.png');
+                    bodyFat=14;
+                    break;
+                case 3:
+                    document.getElementById('body-img').setAttribute('src','res/male/3.png');
+                    bodyFat=17;
+                    break;
+                case 4:
+                    document.getElementById('body-img').setAttribute('src','res/male/4.png');
+                    bodyFat=20;
+                    break;
+                case 5:
+                    document.getElementById('body-img').setAttribute('src','res/male/5.png');
+                    bodyFat=25;
+                    break;
+                case 6:
+                    document.getElementById('body-img').setAttribute('src','res/male/6.png');
+                    bodyFat=30;
+                    break;
+                case 7:
+                    document.getElementById('body-img').setAttribute('src','res/male/7.png');
+                    bodyFat=35;
+                    break;
+                case 8:
+                    document.getElementById('body-img').setAttribute('src','res/male/8.png');
+                    bodyFat=40;
+                    break;
+                default:
+                    document.getElementById('body-img').setAttribute('src','res/male/1.png');
+                    bodyFat=9;
+                    break;
+            }
+        }
+    };
+
+    var changePic=function () {
+        sex=getSex();
+        slideChangePic(sex,1);
+    }
+
+
+
+    var getSex=function () {
+        arr=document.getElementsByName('sex');
+        // 判定选项是否被选中
+        sex=0;
+        if(arr[1].checked){
+            sex=1;
+        }
+        return sex;
+    };
+
+
+    weui.slider('#slider', {
+        step: 12.5,
+        defaultValue: 25,
+        onChange: function(percent){
+            imgId=parseInt(percent/12.5);
+            sex=getSex();
+            console.log(sex);
+            slideChangePic(sex,imgId);
+        }
+    });
+
+    var calculate=function () {
+        // 体重
+        var weight=document.getElementById('weight').value;
+        var height=document.getElementById('height').value/100;
+        var sex=getSex();
+
+        var BMI=weight/(height*height);
+        BMI=BMI.toFixed(2);
+
+        var msg='';
+
+        if(BMI<18.5){
+            msg='BMI：'+BMI+'(过低)  '+'体脂率：'+bodyFat;
+        }
+        else if(18.5<=BMI && BMI<24){
+            msg='BMI：'+BMI+'(正常)  '+'体脂率：'+bodyFat;
+        }
+        else if(24<=BMI && BMI< 28){
+            msg='BMI：'+BMI+'(过重)  '+'体脂率：'+bodyFat;
+        }else{
+            msg='BMI：'+BMI+'(肥胖)  '+'体脂率：'+bodyFat;
+        }
+
+        weui.dialog({
+            title: '测试结果',
+            content: msg,
+            className: 'custom-classname',
+            buttons: [{
+                label: '取消',
+                type: 'default',
+                onClick: function () { }
+            }, {
+                label: '建议',
+                type: 'primary',
+                onClick: function () {
+                    console.log(BMI);
+                    if(BMI<18.5){
+                        window.location.href='low.html';
+                    }
+                    else if(18.5<=BMI && BMI<24){
+                        window.location.href='normal.html';
+                    }
+                    else if(24<=BMI && BMI< 28){
+                        window.location.href='overweight.html';
+                    }else{
+                        window.location.href='fat.html';
+                    }
+                }
+            }]
+        });
+    };
+
+
+</script>
+</body>
+</html>

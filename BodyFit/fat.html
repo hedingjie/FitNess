@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+    <title>WeUI</title>
+    <!-- 引入 WeUI -->
+    <link rel="stylesheet" href="weui.css"/>
+    <script src="echarts.min.js"></script>
+</head>
+<body>
+<article class="weui-article">
+    <section>
+        <h2 class="title">建议</h2>
+        <section>
+            <h3>运动</h3>
+            <p>
+                <img src="./res/fat_sport.jpeg" alt="">
+            </p>
+            <p>
+                最好选择低强度，长时间（30分钟以上）运动，如此消耗卡路里较有效。
+                有氧运动：游泳、骑自行车、溜冰、健走、慢跑、有氧舞蹈、跳绳、摇呼拉圈、登山、爬楼梯等。
+                （注意：过度肥胖者，其下肢关节往往会承受极大的压力，不适合登山、爬楼梯、慢跑、跳绳）
+            </p>
+        </section>
+        <section>
+            <h3>饮食</h3>
+            <div id="main" style="height:400px"></div>
+            <p>
+                三大产能营养素的分配原则是蛋白质占总热量的20%，脂肪占20%，碳水化合物占60%，
+                动物性蛋白质占总蛋白质的50%左右，选择时以鱼虾等水产品、禽类和瘦肉为好，减少烹调油，
+                适当增加粗杂粮，限制甜食、饮料。（注意：千万不要节食或单一元素进食）
+            </p>
+        </section>
+    </section>
+</article>
+<script type="text/javascript" src="weui.min.js"></script>
+<script>
+    var myChart = echarts.init(document.getElementById('main'));
+    myChart.setOption({
+        series : [
+            {
+                name: '访问来源',
+                type: 'pie',
+                radius: '55%',
+                data:[
+                    {value:60, name:'碳水化合物'},
+                    {value:20, name:'蛋白质'},
+                    {value:20, name:'脂肪'}
+                ]
+            }
+        ]
+    });
+</script>
+</body>
+</html>

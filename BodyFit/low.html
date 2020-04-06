@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+    <title>WeUI</title>
+    <!-- 引入 WeUI -->
+    <link rel="stylesheet" href="weui.css"/>
+    <script src="echarts.min.js"></script>
+</head>
+<body>
+<article class="weui-article">
+    <section>
+        <h2 class="title">建议</h2>
+        <section>
+            <h3>运动</h3>
+            <p>
+                <img src="./res/low_sport.jpeg" alt="">
+            </p>
+            <p>
+                增肌需要让肌肉之间产生更多的撕扯。因此，运动中应适当提高运动器材的重量。建议一组8-12个，一次三组，每组间隔1分钟。同时应减少有氧运动。
+            </p>
+        </section>
+        <section>
+            <h3>饮食</h3>
+            <div id="main" style="height:400px"></div>
+            <p>
+                多食多餐。增肌期的饮食建议比例为碳水化合物、蛋白质、脂肪，5：3：2。
+                增肌期更注重碳水化合物的摄入，训练中的超量破坏，亏空肌浆池中的糖原。
+                训练后超量恢复糖原，使肌浆池在周期里反复的亏空和充足之间徘徊，让肌浆池容量扩大，线粒体变饱满，这就是增肌的原理。
+            </p>
+        </section>
+    </section>
+</article>
+<script type="text/javascript" src="weui.min.js"></script>
+<script>
+    var myChart = echarts.init(document.getElementById('main'));
+    myChart.setOption({
+        series : [
+            {
+                name: '访问来源',
+                type: 'pie',
+                radius: '55%',
+                data:[
+                    {value:5, name:'碳水化合物'},
+                    {value:3, name:'蛋白质'},
+                    {value:2, name:'脂肪'}
+                ]
+            }
+        ]
+    });
+</script>
+</body>
+</html>
